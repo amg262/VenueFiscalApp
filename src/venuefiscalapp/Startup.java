@@ -1,6 +1,8 @@
 
 package venuefiscalapp;
 
+import custom.exceptions.IllegalAttendanceException;
+import custom.exceptions.IllegalVenueException;
 import output.strategy.ConsoleOutput;
 import output.strategy.GuiOutput;
 
@@ -19,7 +21,7 @@ public class Startup {
      *
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalVenueException, IllegalAttendanceException {
         // TODO code application logic here
         
         final String n = "pnc park";

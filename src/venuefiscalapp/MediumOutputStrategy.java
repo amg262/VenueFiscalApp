@@ -1,6 +1,9 @@
 
 package venuefiscalapp;
 
+import custom.exceptions.IllegalAttendanceException;
+import custom.exceptions.IllegalVenueException;
+
 /**
  *
  * This is an interface to allow flexibility to how the Tech device will output
@@ -23,26 +26,7 @@ public interface MediumOutputStrategy {
      * @param attendance
      */
     public abstract void inputInfo(String name, double attendance);
-    
-    
-    /**
-     *
-     * Output method that will do the collective calling of methods and 
-     * have the blueprint for the displaying of all the information.
-     * 
-     * @return outputInformation
-     */
-    public abstract String outputGame();
-    
-    
-    /**
-     *
-     * Will be used to output the totals for input games
-     * and attendance etc.
-     * 
-     * @return outputTotals
-     */
-    public abstract String outputTotals();
+
     
     /**
      *
@@ -126,6 +110,28 @@ public interface MediumOutputStrategy {
      * @return totalAtten
      */
     public double getTotalAtten();
+    
+        
+    
+    /**
+     *
+     * Output method that will do the collective calling of methods and 
+     * have the blueprint for the displaying of all the information.
+     * 
+     * @return outputInformation
+     */
+    public abstract String outputGame();
+    
+    
+    /**
+     *
+     * Will be used to output the totals for input games
+     * and attendance etc.
+     * 
+     * @return outputTotals
+     */
+    public abstract String outputTotals();
+    
 
     
 

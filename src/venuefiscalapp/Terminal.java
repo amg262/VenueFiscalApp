@@ -1,6 +1,8 @@
 
 package venuefiscalapp;
 
+import custom.exceptions.IllegalAttendanceException;
+import custom.exceptions.IllegalVenueException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -63,7 +65,9 @@ public class Terminal implements TechDeviceStrategy {
      * @param attendance  
      */
     @Override
-    public void inputInfo(String name, double attendance) {
+    public void inputInfo(String name, double attendance) throws 
+            IllegalVenueException, IllegalAttendanceException {
+        
         venue = medium.getVenue(name);
         medium.inputInfo(name, attendance);
         medList.add(medium);
@@ -77,7 +81,9 @@ public class Terminal implements TechDeviceStrategy {
      * @param outputGame 
      */
     @Override
-    public void outputGame(OutputStrategy outputGame) {
+    public void outputGame(OutputStrategy outputGame) throws 
+            IllegalVenueException, IllegalAttendanceException {
+        
         outputGame.displayInfo(medium.outputGame());
     }
 
@@ -89,7 +95,9 @@ public class Terminal implements TechDeviceStrategy {
      * @param outputTotals
      */
     @Override
-    public void outputTotals(OutputStrategy outputTotals) {
+    public void outputTotals(OutputStrategy outputTotals) throws 
+            IllegalVenueException, IllegalAttendanceException {
+        
         outputTotals.displayInfo(medium.outputTotals());
     }
 }

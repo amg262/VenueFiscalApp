@@ -1,6 +1,8 @@
 
 package venuefiscalapp;
 
+import custom.exceptions.IllegalAttendanceException;
+import custom.exceptions.IllegalVenueException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -68,7 +70,9 @@ public class Ticket implements MediumOutputStrategy {
      * @param attendance
      */
     @Override
-    public void inputInfo(String name, double attendance) {
+    public void inputInfo(String name, double attendance){
+
+        
         this.name = name;
         this.atten = attendance;
         venue = new Stadium(name, attendance);
@@ -82,7 +86,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return garage obj (if found)
      */
     @Override
-    public Stadium getVenue(String name) {
+    public Stadium getVenue(String name){
        sd = new StadiumDatabase();
        return sd.searchForStadiumName(name);
     }
@@ -117,7 +121,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return revenue
      */
     @Override
-    public double getRevenue() {
+    public double getRevenue(){
         revenue = getVenue(name).getRevenue(atten);
         return revenue;
     }
@@ -165,7 +169,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return totalRev
      */
     @Override
-    public double getTotalRev() {
+    public double getTotalRev(){
         for (int i=0; i < mList.size(); i++){
             totalRev += mList.get(i).getRevenue();
         }
@@ -193,7 +197,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return sb.toString()
      */
     @Override
-    public String outputGame() {
+    public String outputGame(){
         
         StringBuilder sb = new StringBuilder();
         //No magic numbers
@@ -205,6 +209,7 @@ public class Ticket implements MediumOutputStrategy {
         final String ATTN = "Atten:     ";
         final String PER_CAP = "Cap:       ";
         final String PHONE = "Phone:    ";
+
         
         sb.append(getVenue(name).getAddress());
         sb.append(LINE);
@@ -222,6 +227,8 @@ public class Ticket implements MediumOutputStrategy {
         sb.append(dec.format(getPercentCap()));
         sb.append(LINE);
         
+ 
+        
         gameNum++;
         
         return sb.toString();
@@ -233,7 +240,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return sb.toString();
      */
     @Override
-    public String outputTotals() {
+    public String outputTotals(){
         
         StringBuilder sb = new StringBuilder();
         //No magic numbers

@@ -5,13 +5,14 @@ package custom.exceptions;
  *
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
-public class InvalidAttendanceException extends Exception {
-    private static final String MSG = "Invalid: Attendance input";
+public class IllegalVenueException extends Exception {
+    
+    private static final String MSG = "Invalid: Venue name input";
 
     /**
      *
      */
-    public InvalidAttendanceException() {
+    public IllegalVenueException() {
         super(MSG);
     }
 
@@ -19,7 +20,7 @@ public class InvalidAttendanceException extends Exception {
      *
      * @param MSG
      */
-    public InvalidAttendanceException(String MSG) {
+    public IllegalVenueException(String MSG) {
         super(MSG);
     }
 
@@ -28,7 +29,7 @@ public class InvalidAttendanceException extends Exception {
      * @param MSG
      * @param thrwbl
      */
-    public InvalidAttendanceException(String MSG, Throwable thrwbl) {
+    public IllegalVenueException(String MSG, Throwable thrwbl) {
         super(MSG, thrwbl);
     }
 
@@ -36,8 +37,7 @@ public class InvalidAttendanceException extends Exception {
      *
      * @param thrwbl
      */
-    public InvalidAttendanceException(Throwable thrwbl) {
+    public IllegalVenueException(Throwable thrwbl) {
         super(thrwbl);
     }
-
 }
