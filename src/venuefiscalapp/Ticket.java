@@ -7,7 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Ticket class that uses MediumOutputStrategy interface so the user
+ * could use a ticket, email, receipt, any type of object to allow for 
+ * complete flexibility and open-ness to change, or expansion. All classes
+ * would need to have the same methods.
  * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
@@ -41,7 +44,7 @@ public class Ticket implements MediumOutputStrategy {
     
     
     /**
-     *
+     * Default constructor
      */
     public Ticket(){}
 
@@ -58,8 +61,8 @@ public class Ticket implements MediumOutputStrategy {
 
     
     /**
-     * 
-     * Inputs the name and attendance, passes it to the stadium.
+     * Inputs the name and attendance, passes it to the stadium,
+     * which in creates inside method.
      * 
      * @param name
      * @param attendance
@@ -72,7 +75,9 @@ public class Ticket implements MediumOutputStrategy {
     }
     
     /**
-     *
+     * Creates instance of StadiumDatabase and returns the object
+     * it finds when it searches for it with the given name
+     * 
      * @param name
      * @return garage obj (if found)
      */
@@ -183,12 +188,15 @@ public class Ticket implements MediumOutputStrategy {
     
     
     /**
-     *
-     * @return
+     * Outputs game totals
+     * 
+     * @return sb.toString()
      */
     @Override
     public String outputGame() {
+        
         StringBuilder sb = new StringBuilder();
+        //No magic numbers
         final String LINE = "\n";
         final String GAMES = "Game #:   ";
         final String COM = ", ";
@@ -203,7 +211,7 @@ public class Ticket implements MediumOutputStrategy {
         sb.append(getVenue(name).getCity()).append(COM).append(getVenue(name).getState());
         sb.append(LINE);
         sb.append(getVenue(name).getPhoneNum());
-        sb.append(LINE + LINE + GAMES + gameNum);
+        sb.append(LINE + LINE + GAMES).append(gameNum);
         sb.append(LINE).append(VENUE);
         sb.append(getVenue(name).getName());
         sb.append(LINE + CASH);
@@ -220,12 +228,15 @@ public class Ticket implements MediumOutputStrategy {
     }
 
     /**
-     *
-     * @return
+     * Outputs cumulative totals
+     * 
+     * @return sb.toString();
      */
     @Override
     public String outputTotals() {
+        
         StringBuilder sb = new StringBuilder();
+        //No magic numbers
         final String LINE = "\n";
         final String COM = ", ";
         final String VENUE = "Venue:    ";
@@ -233,11 +244,11 @@ public class Ticket implements MediumOutputStrategy {
         final String ATTN = "Net Atten:     ";
         final String GAMES = "Net Games:    ";
         
-        sb.append(GAMES + totalGames);
+        sb.append(GAMES).append(totalGames);
         sb.append(LINE);
-        sb.append(CASH + money.format(getTotalRev()));
+        sb.append(CASH).append(money.format(getTotalRev()));
         sb.append(LINE);
-        sb.append(ATTN + num.format(getTotalAtten()));
+        sb.append(ATTN).append(num.format(getTotalAtten()));
         sb.append(LINE);
         
         totalGames++;

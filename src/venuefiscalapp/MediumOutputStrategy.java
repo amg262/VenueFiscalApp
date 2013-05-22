@@ -8,7 +8,7 @@ package venuefiscalapp;
  * receipts, e-mails, printable documents, anything. So have it programmed to an 
  * interface allows more flexibility
  * 
- * @author Andy
+ * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public interface MediumOutputStrategy {
 

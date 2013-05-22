@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package venuefiscalapp;
 
 /**
@@ -10,7 +7,7 @@ package venuefiscalapp;
  * like a concert arena, or a venue like The Fillmore in LA, or a baseball or basketball
  * stadium. This allows any object that uses this interface to be swapped with ease.
  * 
- * @author Andy
+ * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public interface Venue {
     
