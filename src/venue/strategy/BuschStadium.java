@@ -90,9 +90,7 @@ public class BuschStadium implements VenueStrategy {
         if (attendance < 0 || Double.isNaN(attendance)){
             throw new IllegalArgumentException(MSG_A);
         }
-        if (attendance > capacity){
-            throw new IllegalArgumentException(MSG_A);
-        }
+        
         revenue = (attendance * getAvgTicketPrice());
         return revenue;
     }

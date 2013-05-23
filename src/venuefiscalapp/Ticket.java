@@ -113,6 +113,9 @@ public class Ticket implements MediumOutputStrategy {
      */
     @Override
     public double getAttendance() {
+//        if (atten > getVenue(name).getCapacity()){
+//            throw new IllegalArgumentException(MSG_A);
+//        }
         return atten;
     }
 
@@ -209,6 +212,7 @@ public class Ticket implements MediumOutputStrategy {
     public double getTotalAtten() {
         for (int i=0; i < mList.size(); i++){
             totalAtten += mList.get(i).getAttendance();
+
         }
         return totalAtten;
     }

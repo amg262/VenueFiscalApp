@@ -95,7 +95,6 @@ public class Terminal implements TechDeviceStrategy {
         if (outputGame == null){
             throw new NullPointerException();
         }
-        
         outputGame.displayInfo(medium.outputGame());
     }
 
@@ -111,7 +110,6 @@ public class Terminal implements TechDeviceStrategy {
         if (outputTotals == null){
             throw new NullPointerException();
         }
-        
         outputTotals.displayInfo(medium.outputTotals());
     }
 }

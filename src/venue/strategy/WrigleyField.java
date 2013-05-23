@@ -11,8 +11,8 @@ public class WrigleyField implements VenueStrategy {
     private double price = 44.55;
     private double revenue = 0;
     private double percentCap = 0.0;
-  private final String MSG_A = "Invalid: Attendance";
-    
+    private final String MSG_A = "Invalid: Attendance";
+ 
     /**
      * Sets capacity of Venue object
      * 
@@ -87,9 +87,7 @@ public class WrigleyField implements VenueStrategy {
         if (attendance < 0 || Double.isNaN(attendance)){
             throw new IllegalArgumentException(MSG_A);
         }
-        if (attendance > capacity){
-            throw new IllegalArgumentException(MSG_A);
-        }
+        
         revenue = (attendance * getAvgTicketPrice());
         return revenue;
     }
