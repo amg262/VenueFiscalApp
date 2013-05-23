@@ -1,5 +1,5 @@
 
-package input.strategy;
+package inputstrategy;
 
 /**
  *
@@ -9,6 +9,14 @@ package input.strategy;
  */
 public interface InputStrategy {
 
+    /**
+     *
+     * @return
+     */
     public abstract String getName();
+    /**
+     *
+     * @return
+     */
     public abstract double getAttendance();
 }

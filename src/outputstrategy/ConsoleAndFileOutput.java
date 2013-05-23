@@ -1,22 +1,17 @@
 
-package output.strategy;
+package outputstrategy;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
-public class GuiAndFileOutput implements OutputStrategy {
+public class ConsoleAndFileOutput implements OutputStrategy {
 
-    private static final String MSG = "GDI | BaseBall-Revenue-Calc v1.1";
-    final Icon icon = new ImageIcon("money.jpeg");
-    
     /**
      *
      * @param information
@@ -28,7 +23,7 @@ public class GuiAndFileOutput implements OutputStrategy {
             BufferedWriter out = new BufferedWriter(new FileWriter("gui_total.txt", true));
             
             out.write(information);
-            JOptionPane.showMessageDialog(null, information, MSG, JOptionPane.INFORMATION_MESSAGE, icon);
+            System.out.println(information);
             out.close();
             
             } catch (IOException e){

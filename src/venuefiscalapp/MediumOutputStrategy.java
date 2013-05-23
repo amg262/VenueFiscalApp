@@ -1,8 +1,6 @@
 
 package venuefiscalapp;
 
-import custom.exceptions.IllegalAttendanceException;
-import custom.exceptions.IllegalVenueException;
 
 /**
  *
@@ -25,8 +23,7 @@ public interface MediumOutputStrategy {
      * @param name
      * @param attendance
      */
-    public abstract void inputInfo(String name, double attendance) throws 
-            IllegalVenueException, IllegalAttendanceException ;
+    public abstract void inputInfo(String name, double attendance);
 
     
     /**
@@ -38,7 +35,7 @@ public interface MediumOutputStrategy {
      * @param name
      * @return stadium obj (sd.searchForStadium)
      */
-    public abstract Venue getVenue(String name) throws IllegalVenueException;
+    public abstract Venue getVenue(String name);
                 
     /**
      *
@@ -65,7 +62,7 @@ public interface MediumOutputStrategy {
      * 
      * @return revenue
      */
-    public abstract double getRevenue() throws IllegalVenueException;
+    public abstract double getRevenue();
     
     
     /**
@@ -91,7 +88,7 @@ public interface MediumOutputStrategy {
      *
      * @return percent of capacity
      */
-    public abstract double getPercentCap() throws IllegalVenueException;
+    public abstract double getPercentCap();
     
     
 
@@ -101,7 +98,7 @@ public interface MediumOutputStrategy {
      * 
      * @return totalRev
      */
-    public double getTotalRev() throws IllegalVenueException;
+    public double getTotalRev();
     
     
     /**
@@ -121,7 +118,7 @@ public interface MediumOutputStrategy {
      * 
      * @return outputInformation
      */
-    public abstract String outputGame() throws IllegalVenueException;
+    public abstract String outputGame();
     
     
     /**
@@ -131,7 +128,7 @@ public interface MediumOutputStrategy {
      * 
      * @return outputTotals
      */
-    public abstract String outputTotals() throws IllegalVenueException;
+    public abstract String outputTotals();
     
 
     

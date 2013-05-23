@@ -1,6 +1,7 @@
 
 package venuefiscalapp;
 
+
 import java.util.Objects;
 import venue.strategy.VenueStrategy;
 
@@ -270,7 +271,7 @@ public class Stadium implements Venue {
      * @return the revenue
      */
     @Override
-    public double getRevenue(double attendance) {
+    public double getRevenue(double attendance){
         final String MSG = "Invalid: attendance";
         
         if (attendance < 0 || Double.isNaN(attendance)){
@@ -294,7 +295,11 @@ public class Stadium implements Venue {
         this.revenue = revenue;
     }
     
-        @Override
+        /**
+     *
+     * @return
+     */
+    @Override
     public int hashCode() {
         int hash = 3;
         hash = 59 * hash + Objects.hashCode(this.name);
@@ -305,6 +310,11 @@ public class Stadium implements Venue {
         return hash;
     }
 
+    /**
+     *
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {

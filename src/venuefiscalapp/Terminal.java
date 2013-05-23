@@ -1,13 +1,12 @@
 
 package venuefiscalapp;
 
-import custom.exceptions.IllegalAttendanceException;
-import custom.exceptions.IllegalVenueException;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import output.strategy.OutputStrategy;
+import outputstrategy.OutputStrategy;
 
 /**
  *
@@ -22,6 +21,8 @@ public class Terminal implements TechDeviceStrategy {
     private String name;
     private double atten;
     private double totalRev;
+    private final String MSG_V = "Invalid: Venue name";
+    private final String MSG_A = "Invalid: Attendance";
     
     private Venue venue;
     private MediumOutputStrategy medium;
@@ -62,17 +63,16 @@ public class Terminal implements TechDeviceStrategy {
      * medium object to an array list.
      * 
      * @param name
-     * @param attendance  
+     * @param attendance
      */
     @Override
-    public void inputInfo(String name, double attendance) throws 
-            IllegalVenueException, IllegalAttendanceException {
+    public void inputInfo(String name, double attendance){
         
         if (name == null || name.length() < 4){
-            throw new IllegalVenueException();
+            throw new IllegalArgumentException(MSG_V);
         }
         if (attendance < 0 || Double.isNaN(attendance)){
-            throw new IllegalAttendanceException();
+            throw new IllegalArgumentException(MSG_A);
         }
         
         venue = medium.getVenue(name);
@@ -85,10 +85,10 @@ public class Terminal implements TechDeviceStrategy {
      * utilizes outputStrategy interface for flexibility.
      * outputs single game totals.
      * 
-     * @param outputGame 
+     * @param outputGame
      */
     @Override
-    public void outputGame(OutputStrategy outputGame) throws IllegalVenueException {
+    public void outputGame(OutputStrategy outputGame){
         if (outputGame == null){
             throw new NullPointerException();
         }
@@ -104,7 +104,7 @@ public class Terminal implements TechDeviceStrategy {
      * @param outputTotals
      */
     @Override
-    public void outputTotals(OutputStrategy outputTotals) throws IllegalVenueException {
+    public void outputTotals(OutputStrategy outputTotals){
         if (outputTotals == null){
             throw new NullPointerException();
         }

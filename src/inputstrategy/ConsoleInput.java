@@ -1,10 +1,12 @@
 
-package input.strategy;
+package inputstrategy;
 
 import java.util.Scanner;
 
 /**
  *
+ * Input name and attendance using the console.
+ * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public class ConsoleInput implements InputStrategy {
@@ -16,6 +18,10 @@ public class ConsoleInput implements InputStrategy {
     private final String NAME_PROMPT = "Enter Venue Name:   ";
     private final String ATTEN_PROMPT = "Enter Attendance:  ";
     
+    /**
+     *
+     * @return
+     */
     @Override
     public String getName() {
         System.out.println(NAME_PROMPT);
@@ -23,6 +29,10 @@ public class ConsoleInput implements InputStrategy {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public double getAttendance() {
         System.out.println(ATTEN_PROMPT);

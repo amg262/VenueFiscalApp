@@ -14,5 +14,14 @@
         <libraries xmlns="http://www.netbeans.org/ns/ant-project-libraries/1">
             <definitions>.\lib\nblibraries.properties</definitions>
         </libraries>
+        <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
+            <config-files>
+                <config-file>src/venueDatabaseConfig.xml</config-file>
+                <config-file>src/startupConfig.xml</config-file>
+                <config-file>src/loginWindowConfig.xml</config-file>
+                <config-file>src/mainWindowConfig.xml</config-file>
+            </config-files>
+            <config-file-groups/>
+        </spring-data>
     </configuration>
 </project>

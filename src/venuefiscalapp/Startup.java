@@ -1,10 +1,14 @@
 
 package venuefiscalapp;
 
-import custom.exceptions.IllegalAttendanceException;
-import custom.exceptions.IllegalVenueException;
-import output.strategy.ConsoleOutput;
-import output.strategy.GuiOutput;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import outputstrategy.ConsoleAndFileOutput;
+import outputstrategy.ConsoleOutput;
+import outputstrategy.FileOutput;
+import outputstrategy.GuiAndFileOutput;
+import outputstrategy.GuiOutput;
+import outputstrategy.OutputStrategy;
 
 /**
  *
@@ -21,46 +25,79 @@ public class Startup {
      *
      * @param args
      */
-    public static void main(String[] args) throws IllegalVenueException, IllegalAttendanceException {
+    public static void main(String[] args){
         // TODO code application logic here
         
-        final String n = "Miller park";
-        double attendance = 32000;
-        String name = n.toUpperCase();
-
-        TechDeviceStrategy device = new Terminal();
+        
+        final String STARTUP_XML = "startupConfig.xml";
+        final String LOGIN_BEAN = "loginWindow";
         
         try {
-        
-        device.startCalc();
-        device.inputInfo(name, attendance);
-        device.outputGame(new GuiOutput());
-        device.outputTotals(new ConsoleOutput());
-        
-        device.startCalc();
-        device.inputInfo(name, 20000);
-        device.outputGame(new GuiOutput());
-        device.outputTotals(new ConsoleOutput());
-
-        
-        device.startCalc();
-        device.inputInfo(name, 40000);
-        device.outputGame(new GuiOutput());
-        device.outputTotals(new ConsoleOutput());
-        
-        
-        } catch (IllegalVenueException ive){
-            System.out.println(ive.getMessage());
             
-        } catch (IllegalAttendanceException iae){
-            System.out.println(iae.getMessage());
-            
-        } catch (IllegalArgumentException iarge){
-            System.out.println(iarge.getMessage());
-            
+        //Dependency injection!
+        final AbstractApplicationContext context =
+                new ClassPathXmlApplicationContext(new String[] {STARTUP_XML});
+        
+        LoginWindow window = (LoginWindow)context.getBean(LOGIN_BEAN);
+        window.setVisible(true); //Setting window to visible
+        
+        /**
+         * Login Information:
+         * ------------------
+         * user: admin
+         * pass: java
+         */
+        
         } catch (Exception e){
-            System.out.println(e.getMessage());
+            throw e;
         }
-
+        
+        
+        
+//        
+//        final String n = "miller park";
+//        double attendance = 320;
+//        String name = n.toUpperCase();
+//        
+//        //Dependency Injection
+//        AbstractApplicationContext context = 
+//                new ClassPathXmlApplicationContext(new String[] {"startupConfig.xml"});
+//        //Tech devices
+//        TechDeviceStrategy device = (Terminal)context.getBean("device");
+//        
+//        //Output Devices
+//        OutputStrategy guiOuput = (GuiOutput)context.getBean("guiOuput");
+//        OutputStrategy consoleOutput = (ConsoleOutput)context.getBean("consoleOutput");
+//        OutputStrategy fileOutput = (FileOutput)context.getBean("fileOutput");
+//        OutputStrategy guiAndFileOutput = (GuiAndFileOutput)context.getBean("guiAndFileOutput");
+//        OutputStrategy consoleAndFileOutput = (ConsoleAndFileOutput)context.getBean("consoleAndFileOutput");
+//    
+//        try {
+//        
+//        device.startCalc();
+//        device.inputInfo(name, attendance);
+//        device.outputGame(guiOuput);
+//        device.outputTotals(guiOuput);
+//        
+//        device.startCalc();
+//        device.inputInfo(name, 20000);
+//        device.outputGame(guiOuput);
+//        device.outputTotals(guiOuput);
+//
+//        
+//        device.startCalc();
+//        device.inputInfo(name, 40000);
+//        device.outputGame(guiOuput);
+//        device.outputTotals(guiOuput);
+//        
+//
+//        } catch (IllegalArgumentException iarge){
+//            System.out.println(iarge.getMessage());
+//            
+//        } catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+//
+//    }
     }
 }

@@ -2,7 +2,6 @@
 
 package venuefiscalapp;
 
-import custom.exceptions.IllegalVenueException;
 import venue.strategy.WrigleyField;
 import venue.strategy.FenwayPark;
 import venue.strategy.BuschStadium;
@@ -11,6 +10,8 @@ import venue.strategy.MillerPark;
 import venue.strategy.PncPark;
 import java.util.HashSet;
 import java.util.Set;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -22,21 +23,15 @@ import java.util.Set;
 public class VenueDatabase {
     
     private Venue venue;
-    
-    private Venue millerPark = 
-            new Stadium("MILLER PARK", "1 Brewers Way", "Milwaukee", "WI", "(414) 902-4400", new MillerPark());
-    private Venue fenwayPark = 
-            new Stadium("FENWAY PARK", "4 Yawkey Way", "Boston", "MS", "(617) 226-6666", new FenwayPark());
-    private Venue buschStadium = 
-            new Stadium("BUSCH STADIUM", "700 Clark Avenue", "St. Louis", "MO", "(314) 345-9600", new BuschStadium());
-    private Venue pncPark = 
-            new Stadium("PNC PARK", "115 Federal St", "Pittsburgh", "PA", "(412) 321-2827", new PncPark() );
-    private Stadium wrigleyField = 
-            new Stadium("WRIGLEY FIELD" , "060 W Addison St", "Chicago", "IL", "(773) 404-2827", new WrigleyField() );
-    private Venue yankeeStadium = 
-            new Stadium("YANKEE STADIUM", "1 E 161st St", "Bronx", "NY", "(718) 293-4300", new YankeeStadium());
 
-    
+    AbstractApplicationContext context = 
+            new ClassPathXmlApplicationContext(new String[] {"venueDatabaseConfig.xml"});
+    Stadium millerPark = (Stadium)context.getBean("millerPark");
+    Stadium fenwayPark = (Stadium)context.getBean("fenwayPark");
+    Stadium buschStadium = (Stadium)context.getBean("buschStadium");
+    Stadium pncPark = (Stadium)context.getBean("pncPark");
+    Stadium wrigleyField = (Stadium)context.getBean("wrigleyField");
+    Stadium yankeeStadium = (Stadium)context.getBean("yankeeStadium");
     /**
      * 
      * Adds all stadiums to a set, and takes the passed in name and returns the object
@@ -45,7 +40,7 @@ public class VenueDatabase {
      * @param name
      * @return stadium
      */
-    public Venue searchForVenueName(String name) throws IllegalVenueException{
+    public Venue searchForVenueName(String name){
         Set<Venue> venues = new HashSet<>();
         venues.add(millerPark);
         venues.add(fenwayPark);
@@ -55,12 +50,13 @@ public class VenueDatabase {
         venues.add(yankeeStadium);
          
         setVenue(null);
+        final String MSG = "Invalid: Venue name";
         
         for (Venue v: venues){
             if (name.equals(v.getName())){
                 setVenue(v);
                 if (getVenue() == null){
-                    throw new IllegalVenueException();
+                    throw new IllegalArgumentException(MSG);
                 }
             }
         }

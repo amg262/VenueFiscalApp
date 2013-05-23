@@ -1,10 +1,11 @@
 
-package input.strategy;
+package inputstrategy;
 
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Input name and attendance using the GUI.
+ * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public class GuiInput implements InputStrategy {
@@ -16,12 +17,20 @@ public class GuiInput implements InputStrategy {
     private final String ATTEN_PROMPT = "Enter Attendance:  ";
     
     
+    /**
+     *
+     * @return
+     */
     @Override
     public String getName() {
         name = JOptionPane.showInputDialog(null, NAME_PROMPT);
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public double getAttendance() {
         String a = JOptionPane.showInputDialog(null, ATTEN_PROMPT);

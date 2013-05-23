@@ -1,9 +1,8 @@
 
 package venuefiscalapp;
 
-import custom.exceptions.IllegalAttendanceException;
-import custom.exceptions.IllegalVenueException;
-import output.strategy.OutputStrategy;
+
+import outputstrategy.OutputStrategy;
 
 /**
  *
@@ -28,19 +27,17 @@ public interface TechDeviceStrategy {
      * where it is handled.
      * 
      * @param name
-     * @param attendance  
+     * @param attendance
      */
-    public abstract void inputInfo(String name, double attendance)
-            throws IllegalVenueException, IllegalAttendanceException;
+    public abstract void inputInfo(String name, double attendance);
 
     
     /**
      * outputs statistics for a single entered game
      * 
-     * @param outputGame 
+     * @param outputGame
      */
-    public abstract void outputGame(OutputStrategy outputGame) 
-            throws IllegalVenueException  ;
+    public abstract void outputGame(OutputStrategy outputGame);
 
     
     /**
@@ -48,8 +45,7 @@ public interface TechDeviceStrategy {
      * 
      * @param outputTotals
      */
-    public abstract void outputTotals(OutputStrategy outputTotals) 
-            throws IllegalVenueException ;
+    public abstract void outputTotals(OutputStrategy outputTotals);
    
 
 }

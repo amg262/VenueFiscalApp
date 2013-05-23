@@ -1,5 +1,5 @@
 
-package output.strategy;
+package outputstrategy;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;

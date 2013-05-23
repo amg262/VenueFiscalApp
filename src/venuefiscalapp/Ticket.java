@@ -1,8 +1,7 @@
 
 package venuefiscalapp;
 
-import custom.exceptions.IllegalAttendanceException;
-import custom.exceptions.IllegalVenueException;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -23,6 +22,10 @@ public class Ticket implements MediumOutputStrategy {
     private String name;
     private double atten;
     private double percentCap;
+    
+    //Custome messages
+    private final String MSG_V = "Invalid: Venue name";
+    private final String MSG_A = "Invalid: Attendance";
     
     //totals variables
     private double totalRev;
@@ -70,14 +73,13 @@ public class Ticket implements MediumOutputStrategy {
      * @param attendance
      */
     @Override
-    public void inputInfo(String name, double attendance) throws 
-            IllegalVenueException, IllegalAttendanceException {
+    public void inputInfo(String name, double attendance) {
         
         if (name == null || name.length() < 4){
-            throw new IllegalVenueException();
+            throw new IllegalArgumentException(MSG_V);
         }
         if (attendance < 0 || Double.isNaN(attendance)){
-            throw new IllegalAttendanceException();
+            throw new IllegalArgumentException(MSG_A);
         }
         
         this.name = name;
@@ -93,11 +95,11 @@ public class Ticket implements MediumOutputStrategy {
      * @return garage obj (if found)
      */
     @Override
-    public Venue getVenue(String name) throws IllegalVenueException{
+    public Venue getVenue(String name){
        vd = new VenueDatabase();
        
        if (vd.searchForVenueName(name) == null){
-           throw new IllegalVenueException();
+           throw new IllegalArgumentException(MSG_V);
        }
        
        return vd.searchForVenueName(name);
@@ -122,7 +124,7 @@ public class Ticket implements MediumOutputStrategy {
     @Override
     public void setAttendance(double attendance) {
         if (attendance < 0 || Double.isNaN(attendance)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MSG_A);
         }
         this.atten = attendance;
     }
@@ -136,7 +138,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return revenue
      */
     @Override
-    public double getRevenue() throws IllegalVenueException{
+    public double getRevenue(){
         revenue = getVenue(name).getRevenue(atten);
         return revenue;
     }
@@ -176,7 +178,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return percentCap
      */
     @Override
-    public double getPercentCap() throws IllegalVenueException{
+    public double getPercentCap(){
         percentCap = (atten / getVenue(name).getCapacity());
         return percentCap;
     }
@@ -190,7 +192,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return totalRev
      */
     @Override
-    public double getTotalRev() throws IllegalVenueException{
+    public double getTotalRev(){
         for (int i=0; i < mList.size(); i++){
             totalRev += mList.get(i).getRevenue();
         }
@@ -218,7 +220,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return sb.toString()
      */
     @Override
-    public String outputGame() throws IllegalVenueException{
+    public String outputGame(){
         
         StringBuilder sb = new StringBuilder();
         //No magic numbers
@@ -261,7 +263,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return sb.toString();
      */
     @Override
-    public String outputTotals() throws IllegalVenueException{
+    public String outputTotals(){
         
         StringBuilder sb = new StringBuilder();
         //No magic numbers
