@@ -3,7 +3,8 @@ package venue.strategy;
 
 
 /**
- *
+ * Strategy object that has Spec of Wrigley Field, in Chicago ILL
+ * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public class WrigleyField implements VenueStrategy {

@@ -11,7 +11,7 @@
     <bean id="device" class="venuefiscalapp.Terminal" />
     
     <!--Beans for different OutputStrategy objects-->
-    <bean id="guiOuput" class="outputstrategy.GuiOutput"/>
+    <bean id="guiOutput" class="outputstrategy.GuiOutput"/>
     <bean id="consoleOutput" class="outputstrategy.ConsoleOutput"/>
     <bean id="fileOutput" class="outputstrategy.FileOutput"/>
     <bean id="guiAndFileOutput" class="outputstrategy.GuiAndFileOutput"/>

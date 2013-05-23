@@ -3,7 +3,8 @@ package venue.strategy;
 
 
 /**
- *
+ * Strategy object that has Spec of Fenway Park, in Boston MASS
+ * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public class FenwayPark implements VenueStrategy {

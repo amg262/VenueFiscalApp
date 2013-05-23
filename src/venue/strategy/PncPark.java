@@ -3,7 +3,8 @@ package venue.strategy;
 
 
 /**
- *
+ * Strategy object that has Spec of PNC Park, in Pittsburgh Penn
+ * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public class PncPark implements VenueStrategy {

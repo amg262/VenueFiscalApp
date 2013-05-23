@@ -4,6 +4,8 @@ package venue.strategy;
 
 /**
  *
+ * Strategy object that has Spec of Miller Park, in Milwaukee WI
+ * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public class MillerPark implements VenueStrategy {

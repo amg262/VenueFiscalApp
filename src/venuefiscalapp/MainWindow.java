@@ -13,7 +13,10 @@ import outputstrategy.OutputStrategy;
 
 /**
  *
- * @author Andy
+ * MainWindow gui that handles all input and output of data, messages,
+ * and exceptions. Can not be run on its own, must be run with GUI
+ * 
+ * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public class MainWindow extends javax.swing.JFrame {
     
@@ -29,7 +32,7 @@ public class MainWindow extends javax.swing.JFrame {
     TechDeviceStrategy device = (Terminal)context.getBean("device");
 
     //Output Devices
-    OutputStrategy guiOuput = (GuiOutput)context.getBean("guiOuput");
+    OutputStrategy guiOutput = (GuiOutput)context.getBean("guiOutput");
     OutputStrategy consoleOutput = (ConsoleOutput)context.getBean("consoleOutput");
     OutputStrategy fileOutput = (FileOutput)context.getBean("fileOutput");
     OutputStrategy guiAndFileOutput = (GuiAndFileOutput)context.getBean("guiAndFileOutput");
@@ -172,7 +175,7 @@ public class MainWindow extends javax.swing.JFrame {
         
         device.startCalc();
         device.inputInfo(name, attendance);
-        device.outputGame(guiOuput);
+        device.outputGame(guiOutput);
         
         } catch (NumberFormatException nfe){
             JOptionPane.showMessageDialog(this, nfe.getMessage(), GDI, JOptionPane.ERROR_MESSAGE);
@@ -183,10 +186,6 @@ public class MainWindow extends javax.swing.JFrame {
         } catch (Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage(), GDI, JOptionPane.ERROR_MESSAGE);
         }
-
-        
-        
-        
         
     }//GEN-LAST:event_btnSubmitActionPerformed
 
@@ -195,7 +194,7 @@ public class MainWindow extends javax.swing.JFrame {
         
         try {
         
-        device.outputTotals(guiOuput);
+        device.outputTotals(guiOutput);
         
         } catch (IllegalArgumentException iae){
             JOptionPane.showMessageDialog(this, iae.getMessage(), GDI, JOptionPane.ERROR_MESSAGE);

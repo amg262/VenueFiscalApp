@@ -3,7 +3,8 @@ package venue.strategy;
 
 
 /**
- *
+ * Strategy object that has Spec of Yankee Stadium, in Bronx NY
+ * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public class YankeeStadium implements VenueStrategy {
