@@ -12,10 +12,13 @@ import outputstrategy.OutputStrategy;
 
 /**
  *
- * This is a program that will take in the name of a venue or stadium etc.
- * and will you input the attendance it will will output the percent of capacity,
- * the revenue generated based on attendance and average ticket prices. All average
- * ticket prices are factual and researched.
+ * The program is a Venue-Fiscal tool that will take in the venues name, and attendance
+ * it will will output the percent of capacity, the revenue generated based on attendance
+ * and average ticket prices. All average ticket prices, names of venues, capacities, venue
+ * information are factual and researched.
+ * 
+ * Input will allow for values GREATER THAN the venues capacity so there is a way to
+ * see how much more money could be generated if the venue were expanded.
  * 
  * @author Andy
  */
@@ -51,53 +54,5 @@ public class Startup {
         } catch (Exception e){
             throw e;
         }
-        
-        
-        
-//        
-//        final String n = "miller park";
-//        double attendance = 320;
-//        String name = n.toUpperCase();
-//        
-//        //Dependency Injection
-//        AbstractApplicationContext context = 
-//                new ClassPathXmlApplicationContext(new String[] {"startupConfig.xml"});
-//        //Tech devices
-//        TechDeviceStrategy device = (Terminal)context.getBean("device");
-//        
-//        //Output Devices
-//        OutputStrategy guiOuput = (GuiOutput)context.getBean("guiOuput");
-//        OutputStrategy consoleOutput = (ConsoleOutput)context.getBean("consoleOutput");
-//        OutputStrategy fileOutput = (FileOutput)context.getBean("fileOutput");
-//        OutputStrategy guiAndFileOutput = (GuiAndFileOutput)context.getBean("guiAndFileOutput");
-//        OutputStrategy consoleAndFileOutput = (ConsoleAndFileOutput)context.getBean("consoleAndFileOutput");
-//    
-//        try {
-//        
-//        device.startCalc();
-//        device.inputInfo(name, attendance);
-//        device.outputGame(guiOuput);
-//        device.outputTotals(guiOuput);
-//        
-//        device.startCalc();
-//        device.inputInfo(name, 20000);
-//        device.outputGame(guiOuput);
-//        device.outputTotals(guiOuput);
-//
-//        
-//        device.startCalc();
-//        device.inputInfo(name, 40000);
-//        device.outputGame(guiOuput);
-//        device.outputTotals(guiOuput);
-//        
-//
-//        } catch (IllegalArgumentException iarge){
-//            System.out.println(iarge.getMessage());
-//            
-//        } catch (Exception e){
-//            System.out.println(e.getMessage());
-//        }
-//
-//    }
     }
 }

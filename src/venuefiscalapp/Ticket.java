@@ -32,8 +32,7 @@ public class Ticket implements MediumOutputStrategy {
     private double totalAtten;
 
     //static counter
-    private static int gameNum = 1;
-    private static int totalGames = 1;
+    private static int gameNum = 0;
 
     //Objects/classes
     private Stadium stadium;
@@ -62,6 +61,7 @@ public class Ticket implements MediumOutputStrategy {
      */
     public Ticket(List<MediumOutputStrategy> medList) {
         this.mList = medList;
+        ++gameNum;
     }
 
     
@@ -216,7 +216,7 @@ public class Ticket implements MediumOutputStrategy {
         }
         return totalAtten;
     }
-    
+
     
     /**
      * Outputs game totals
@@ -256,7 +256,7 @@ public class Ticket implements MediumOutputStrategy {
         
  
         
-        gameNum++;
+   
         
         return sb.toString();
     }
@@ -278,14 +278,12 @@ public class Ticket implements MediumOutputStrategy {
         final String ATTN = "Net Atten:     ";
         final String GAMES = "Net Games:    ";
         
-        sb.append(GAMES).append(totalGames);
+        sb.append(GAMES).append(gameNum);
         sb.append(LINE);
         sb.append(CASH).append(money.format(getTotalRev()));
         sb.append(LINE);
         sb.append(ATTN).append(num.format(getTotalAtten()));
         sb.append(LINE);
-        
-        totalGames++;
         
         return sb.toString();
     }
