@@ -68,6 +68,13 @@ public class Terminal implements TechDeviceStrategy {
     public void inputInfo(String name, double attendance) throws 
             IllegalVenueException, IllegalAttendanceException {
         
+        if (name == null || name.length() < 4){
+            throw new IllegalVenueException();
+        }
+        if (attendance < 0 || Double.isNaN(attendance)){
+            throw new IllegalAttendanceException();
+        }
+        
         venue = medium.getVenue(name);
         medium.inputInfo(name, attendance);
         medList.add(medium);
@@ -81,8 +88,10 @@ public class Terminal implements TechDeviceStrategy {
      * @param outputGame 
      */
     @Override
-    public void outputGame(OutputStrategy outputGame) throws 
-            IllegalVenueException, IllegalAttendanceException {
+    public void outputGame(OutputStrategy outputGame) throws IllegalVenueException {
+        if (outputGame == null){
+            throw new NullPointerException();
+        }
         
         outputGame.displayInfo(medium.outputGame());
     }
@@ -95,8 +104,10 @@ public class Terminal implements TechDeviceStrategy {
      * @param outputTotals
      */
     @Override
-    public void outputTotals(OutputStrategy outputTotals) throws 
-            IllegalVenueException, IllegalAttendanceException {
+    public void outputTotals(OutputStrategy outputTotals) throws IllegalVenueException {
+        if (outputTotals == null){
+            throw new NullPointerException();
+        }
         
         outputTotals.displayInfo(medium.outputTotals());
     }

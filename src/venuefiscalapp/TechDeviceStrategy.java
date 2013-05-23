@@ -39,7 +39,8 @@ public interface TechDeviceStrategy {
      * 
      * @param outputGame 
      */
-    public abstract void outputGame(OutputStrategy outputGame) ;
+    public abstract void outputGame(OutputStrategy outputGame) 
+            throws IllegalVenueException  ;
 
     
     /**
@@ -47,7 +48,8 @@ public interface TechDeviceStrategy {
      * 
      * @param outputTotals
      */
-    public abstract void outputTotals(OutputStrategy outputTotals);
+    public abstract void outputTotals(OutputStrategy outputTotals) 
+            throws IllegalVenueException ;
    
 
 }

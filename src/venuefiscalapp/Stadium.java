@@ -1,6 +1,7 @@
 
 package venuefiscalapp;
 
+import java.util.Objects;
 import venue.strategy.VenueStrategy;
 
 
@@ -16,6 +17,7 @@ public class Stadium implements Venue {
     private String name;
     private String address;
     private String city;
+
     private String state;
     private String phoneNum;
     private double totalRev;
@@ -291,5 +293,42 @@ public class Stadium implements Venue {
         }
         this.revenue = revenue;
     }
+    
+        @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + Objects.hashCode(this.address);
+        hash = 59 * hash + Objects.hashCode(this.city);
+        hash = 59 * hash + Objects.hashCode(this.state);
+        hash = 59 * hash + Objects.hashCode(this.phoneNum);
+        return hash;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Stadium other = (Stadium) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.address, other.address)) {
+            return false;
+        }
+        if (!Objects.equals(this.city, other.city)) {
+            return false;
+        }
+        if (!Objects.equals(this.state, other.state)) {
+            return false;
+        }
+        if (!Objects.equals(this.phoneNum, other.phoneNum)) {
+            return false;
+        }
+        return true;
+    }
 }

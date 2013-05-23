@@ -35,7 +35,7 @@ public class Ticket implements MediumOutputStrategy {
     //Objects/classes
     private Stadium stadium;
     private Venue venue;
-    private StadiumDatabase sd;
+    private VenueDatabase vd;
     private List<MediumOutputStrategy> mList = new ArrayList<>();
     
     //Formatters
@@ -70,8 +70,15 @@ public class Ticket implements MediumOutputStrategy {
      * @param attendance
      */
     @Override
-    public void inputInfo(String name, double attendance){
-
+    public void inputInfo(String name, double attendance) throws 
+            IllegalVenueException, IllegalAttendanceException {
+        
+        if (name == null || name.length() < 4){
+            throw new IllegalVenueException();
+        }
+        if (attendance < 0 || Double.isNaN(attendance)){
+            throw new IllegalAttendanceException();
+        }
         
         this.name = name;
         this.atten = attendance;
@@ -79,16 +86,21 @@ public class Ticket implements MediumOutputStrategy {
     }
     
     /**
-     * Creates instance of StadiumDatabase and returns the object
+     * Creates instance of VenueDatabase and returns the object
      * it finds when it searches for it with the given name
      * 
      * @param name
      * @return garage obj (if found)
      */
     @Override
-    public Stadium getVenue(String name){
-       sd = new StadiumDatabase();
-       return sd.searchForStadiumName(name);
+    public Venue getVenue(String name) throws IllegalVenueException{
+       vd = new VenueDatabase();
+       
+       if (vd.searchForVenueName(name) == null){
+           throw new IllegalVenueException();
+       }
+       
+       return vd.searchForVenueName(name);
     }
 
     
@@ -109,6 +121,9 @@ public class Ticket implements MediumOutputStrategy {
      */
     @Override
     public void setAttendance(double attendance) {
+        if (attendance < 0 || Double.isNaN(attendance)){
+            throw new IllegalArgumentException();
+        }
         this.atten = attendance;
     }
     
@@ -121,7 +136,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return revenue
      */
     @Override
-    public double getRevenue(){
+    public double getRevenue() throws IllegalVenueException{
         revenue = getVenue(name).getRevenue(atten);
         return revenue;
     }
@@ -133,6 +148,9 @@ public class Ticket implements MediumOutputStrategy {
      */
     @Override
     public void setRevenue(double revenue) {
+        if (revenue < 0 || Double.isNaN(revenue)){
+            throw new IllegalArgumentException();
+        }
         this.revenue = revenue;
     }
     
@@ -145,6 +163,9 @@ public class Ticket implements MediumOutputStrategy {
      */
     @Override
     public void setPercentCap(double percentCap) {
+        if (percentCap < 0 || Double.isNaN(percentCap)){
+            throw new IllegalArgumentException();
+        }
         this.percentCap = percentCap;
     }
 
@@ -155,7 +176,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return percentCap
      */
     @Override
-    public double getPercentCap() {
+    public double getPercentCap() throws IllegalVenueException{
         percentCap = (atten / getVenue(name).getCapacity());
         return percentCap;
     }
@@ -169,7 +190,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return totalRev
      */
     @Override
-    public double getTotalRev(){
+    public double getTotalRev() throws IllegalVenueException{
         for (int i=0; i < mList.size(); i++){
             totalRev += mList.get(i).getRevenue();
         }
@@ -197,7 +218,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return sb.toString()
      */
     @Override
-    public String outputGame(){
+    public String outputGame() throws IllegalVenueException{
         
         StringBuilder sb = new StringBuilder();
         //No magic numbers
@@ -240,7 +261,7 @@ public class Ticket implements MediumOutputStrategy {
      * @return sb.toString();
      */
     @Override
-    public String outputTotals(){
+    public String outputTotals() throws IllegalVenueException{
         
         StringBuilder sb = new StringBuilder();
         //No magic numbers

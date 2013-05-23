@@ -2,6 +2,7 @@
 
 package venuefiscalapp;
 
+import custom.exceptions.IllegalVenueException;
 import venue.strategy.WrigleyField;
 import venue.strategy.FenwayPark;
 import venue.strategy.BuschStadium;
@@ -18,21 +19,21 @@ import java.util.Set;
  * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
-public class StadiumDatabase {
+public class VenueDatabase {
     
-    private Stadium stadium;
+    private Venue venue;
     
-    private Stadium millerPark = 
+    private Venue millerPark = 
             new Stadium("MILLER PARK", "1 Brewers Way", "Milwaukee", "WI", "(414) 902-4400", new MillerPark());
-    private Stadium fenwayPark = 
+    private Venue fenwayPark = 
             new Stadium("FENWAY PARK", "4 Yawkey Way", "Boston", "MS", "(617) 226-6666", new FenwayPark());
-    private Stadium buschStadium = 
+    private Venue buschStadium = 
             new Stadium("BUSCH STADIUM", "700 Clark Avenue", "St. Louis", "MO", "(314) 345-9600", new BuschStadium());
-    private Stadium pncPark = 
+    private Venue pncPark = 
             new Stadium("PNC PARK", "115 Federal St", "Pittsburgh", "PA", "(412) 321-2827", new PncPark() );
     private Stadium wrigleyField = 
             new Stadium("WRIGLEY FIELD" , "060 W Addison St", "Chicago", "IL", "(773) 404-2827", new WrigleyField() );
-    private Stadium yankeeStadium = 
+    private Venue yankeeStadium = 
             new Stadium("YANKEE STADIUM", "1 E 161st St", "Bronx", "NY", "(718) 293-4300", new YankeeStadium());
 
     
@@ -44,38 +45,41 @@ public class StadiumDatabase {
      * @param name
      * @return stadium
      */
-    public Stadium searchForStadiumName(String name){
-        Set<Stadium> stadiums = new HashSet<>();
-        stadiums.add(millerPark);
-        stadiums.add(fenwayPark);
-        stadiums.add(buschStadium);
-        stadiums.add(pncPark);
-        stadiums.add(wrigleyField);
-        stadiums.add(yankeeStadium);
+    public Venue searchForVenueName(String name) throws IllegalVenueException{
+        Set<Venue> venues = new HashSet<>();
+        venues.add(millerPark);
+        venues.add(fenwayPark);
+        venues.add(buschStadium);
+        venues.add(pncPark);
+        venues.add(wrigleyField);
+        venues.add(yankeeStadium);
          
-        stadium = null;
+        setVenue(null);
         
-        for (Stadium s: stadiums){
-            if (name.equals(s.getName())){
-                setStadium(s);
+        for (Venue v: venues){
+            if (name.equals(v.getName())){
+                setVenue(v);
+                if (getVenue() == null){
+                    throw new IllegalVenueException();
+                }
             }
         }
-        return getStadium();
+        return getVenue();
     } 
-    
-    
-    
+
     /**
-     * @return the stadium
+     * @return the venue
      */
-    public Stadium getStadium() {
-        return stadium;
+    public Venue getVenue() {
+        return venue;
     }
 
     /**
-     * @param stadium the stadium to set
+     * @param venue the venue to set
      */
-    public void setStadium(Stadium stadium) {
-        this.stadium = stadium;
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
+    
+    
 }

@@ -25,7 +25,8 @@ public interface MediumOutputStrategy {
      * @param name
      * @param attendance
      */
-    public abstract void inputInfo(String name, double attendance);
+    public abstract void inputInfo(String name, double attendance) throws 
+            IllegalVenueException, IllegalAttendanceException ;
 
     
     /**
@@ -37,8 +38,8 @@ public interface MediumOutputStrategy {
      * @param name
      * @return stadium obj (sd.searchForStadium)
      */
-    public abstract Venue getVenue(String name);
-    
+    public abstract Venue getVenue(String name) throws IllegalVenueException;
+                
     /**
      *
      * Returns passed in attendance as input by user.
@@ -64,7 +65,7 @@ public interface MediumOutputStrategy {
      * 
      * @return revenue
      */
-    public abstract double getRevenue();
+    public abstract double getRevenue() throws IllegalVenueException;
     
     
     /**
@@ -90,7 +91,7 @@ public interface MediumOutputStrategy {
      *
      * @return percent of capacity
      */
-    public abstract double getPercentCap();
+    public abstract double getPercentCap() throws IllegalVenueException;
     
     
 
@@ -100,7 +101,7 @@ public interface MediumOutputStrategy {
      * 
      * @return totalRev
      */
-    public double getTotalRev();
+    public double getTotalRev() throws IllegalVenueException;
     
     
     /**
@@ -120,7 +121,7 @@ public interface MediumOutputStrategy {
      * 
      * @return outputInformation
      */
-    public abstract String outputGame();
+    public abstract String outputGame() throws IllegalVenueException;
     
     
     /**
@@ -130,7 +131,7 @@ public interface MediumOutputStrategy {
      * 
      * @return outputTotals
      */
-    public abstract String outputTotals();
+    public abstract String outputTotals() throws IllegalVenueException;
     
 
     
