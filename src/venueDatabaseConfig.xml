@@ -6,7 +6,7 @@
 
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd" xmlns:aop="http://www.springframework.org/schema/aop">
    
-    
+    <!--Beans for different Venues-->
     <bean id="millerPark" class="venuefiscalapp.Stadium">
         <constructor-arg type="String" value="MILLER PARK" />
         <constructor-arg type="String" value="1 Brewers Way" />
@@ -62,7 +62,7 @@
     </bean>
 
     
-    
+    <!--Beans for different VenueStrategy objects-->
     <bean id="millerParkStrategy" class="venue.strategy.MillerPark"/>
     <bean id="fenwayParkStrategy" class="venue.strategy.FenwayPark"/>
     <bean id="buschStadiumStrategy" class="venue.strategy.BuschStadium"/>

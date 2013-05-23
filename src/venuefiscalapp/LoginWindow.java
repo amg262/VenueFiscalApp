@@ -168,6 +168,10 @@ public class LoginWindow extends javax.swing.JFrame {
         }   
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "LoginWindow{" + "btnLogin=" + btnLogin + ", jLabel2="

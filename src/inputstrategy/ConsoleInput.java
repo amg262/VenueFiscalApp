@@ -5,7 +5,8 @@ import java.util.Scanner;
 
 /**
  *
- * Input name and attendance using the console.
+ * Strategy object that will get input name and attendance 
+ * using the console.
  * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
@@ -19,8 +20,9 @@ public class ConsoleInput implements InputStrategy {
     private final String ATTEN_PROMPT = "Enter Attendance:  ";
     
     /**
-     *
-     * @return
+     * Asks for name, then assigns in based on keyboard entry
+     * 
+     * @return name
      */
     @Override
     public String getName() {
@@ -30,8 +32,9 @@ public class ConsoleInput implements InputStrategy {
     }
 
     /**
-     *
-     * @return
+     * Asks for attendance, then assigns in based on keyboard entry
+     * 
+     * @return atten
      */
     @Override
     public double getAttendance() {

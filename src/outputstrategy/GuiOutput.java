@@ -6,7 +6,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Output strategy object that utilizes the GUI to 
+ * display information
+ * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
 public class GuiOutput implements OutputStrategy {
@@ -15,7 +17,8 @@ public class GuiOutput implements OutputStrategy {
     final Icon icon = new ImageIcon("money.jpeg");
     
     /**
-     *
+     * Displays information using JOptionPane.
+     * 
      * @param information
      */
     @Override

@@ -4,7 +4,8 @@ package inputstrategy;
 import javax.swing.JOptionPane;
 
 /**
- * Input name and attendance using the GUI.
+ * Strategy object that will get input name and attendance 
+ * using the GUIO.
  * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
@@ -18,8 +19,9 @@ public class GuiInput implements InputStrategy {
     
     
     /**
-     *
-     * @return
+     * Asks for name, then assigns in based on keyboard entry
+     * 
+     * @return name
      */
     @Override
     public String getName() {
@@ -28,8 +30,9 @@ public class GuiInput implements InputStrategy {
     }
 
     /**
-     *
-     * @return
+     * Asks for name, then assigns in based on keyboard entry
+     * 
+     * @return atten
      */
     @Override
     public double getAttendance() {

@@ -10,13 +10,16 @@ package inputstrategy;
 public interface InputStrategy {
 
     /**
-     *
-     * @return
+     * gets name based on what user types in
+     * 
+     * @return name
      */
     public abstract String getName();
+    
     /**
-     *
-     * @return
+     * gets atten based on what user types in
+     * 
+     * @return atten
      */
     public abstract double getAttendance();
 }

@@ -161,19 +161,21 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
+                
+    
+        try {
         
         String n = txtName.getText();
         String a = txtAttendance.getText();
         double attendance = Double.valueOf(a);
         String name = n.toUpperCase();
         
-    
-        try {
-        
         device.startCalc();
         device.inputInfo(name, attendance);
         device.outputGame(guiOuput);
         
+        } catch (NumberFormatException nfe){
+            JOptionPane.showMessageDialog(this, nfe.getMessage(), GDI, JOptionPane.ERROR_MESSAGE);
 
         } catch (IllegalArgumentException iae){
             JOptionPane.showMessageDialog(this, iae.getMessage(), GDI, JOptionPane.ERROR_MESSAGE);

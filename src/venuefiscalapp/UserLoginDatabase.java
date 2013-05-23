@@ -103,6 +103,10 @@ public class UserLoginDatabase {
         return true;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "UserLoginDatabase{" + "username=" + username

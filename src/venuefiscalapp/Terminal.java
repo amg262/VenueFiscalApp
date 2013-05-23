@@ -71,8 +71,11 @@ public class Terminal implements TechDeviceStrategy {
         if (name == null || name.length() < 4){
             throw new IllegalArgumentException(MSG_V);
         }
-        if (attendance < 0 || Double.isNaN(attendance)){
+        if (attendance < 0){
             throw new IllegalArgumentException(MSG_A);
+        }
+        if (Double.isNaN(attendance)){
+            throw new NumberFormatException();
         }
         
         venue = medium.getVenue(name);
