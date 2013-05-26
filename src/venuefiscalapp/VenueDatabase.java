@@ -32,6 +32,7 @@ public class VenueDatabase {
     Stadium pncPark = (Stadium)context.getBean("pncPark");
     Stadium wrigleyField = (Stadium)context.getBean("wrigleyField");
     Stadium yankeeStadium = (Stadium)context.getBean("yankeeStadium");
+    Stadium lambeauField = (Stadium)context.getBean("lambeauField");
     /**
      * 
      * Adds all stadiums to a set, and takes the passed in name and returns the object
@@ -48,6 +49,10 @@ public class VenueDatabase {
         venues.add(pncPark);
         venues.add(wrigleyField);
         venues.add(yankeeStadium);
+        venues.add(lambeauField);
+        //venues.add(next addition);
+        //venues.add(next addition);
+        
          
         setVenue(null);
         final String MSG = "Invalid: Venue name";

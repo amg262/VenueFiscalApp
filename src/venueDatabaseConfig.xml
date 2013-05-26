@@ -60,6 +60,15 @@
         <constructor-arg type="String" value="(718) 293-4300" />
         <constructor-arg ref="yankeeStadiumStrategy" />
     </bean>
+    
+    <bean id="lambeauField" class="venuefiscalapp.Stadium">
+        <constructor-arg type="String" value="LAMBEAU FIELD" />
+        <constructor-arg type="String" value="1265 Lombardi Ave." />
+        <constructor-arg type="String" value="Green Bay" />
+        <constructor-arg type="String" value="WI" />
+        <constructor-arg type="String" value="(920) 496-5700" />
+        <constructor-arg ref="lambeauFieldStrategy" />
+    </bean>
 
     
     <!--Beans for different VenueStrategy objects-->
@@ -69,5 +78,6 @@
     <bean id="pncParkStrategy" class="venue.strategy.PncPark"/>
     <bean id="wrigleyFieldStrategy" class="venue.strategy.WrigleyField"/>
     <bean id="yankeeStadiumStrategy" class="venue.strategy.YankeeStadium"/>
+    <bean id="lambeauFieldStrategy" class="venue.strategy.LambeauField"/>
     
 </beans>
