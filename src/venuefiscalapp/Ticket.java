@@ -37,7 +37,7 @@ public class Ticket implements MediumOutputStrategy {
     //Objects/classes
     private Stadium stadium;
     private Venue venue;
-    private VenueDatabase vd;
+    private VenueDatabaseStrategy vd;
     private List<MediumOutputStrategy> mList = new ArrayList<>();
     
     //Formatters

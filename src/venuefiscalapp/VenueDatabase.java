@@ -14,15 +14,16 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- *
+ * Strategy object.
  * Class that adds all different stadiums to a set, and has method which will
  * search thru them with the provided name to see if the Object exists
  * 
  * @author Andrew Gunn | amgunn1@hotmail.com
  */
-public class VenueDatabase {
+public class VenueDatabase implements VenueDatabaseStrategy {
     
     private Venue venue;
+    
 
     AbstractApplicationContext context = 
             new ClassPathXmlApplicationContext(new String[] {"venueDatabaseConfig.xml"});
@@ -81,6 +82,4 @@ public class VenueDatabase {
     public void setVenue(Venue venue) {
         this.venue = venue;
     }
-    
-    
 }

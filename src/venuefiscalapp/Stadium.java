@@ -314,7 +314,7 @@ public class Stadium implements Venue {
     /**
      *
      * @param obj
-     * @return
+     * @return boolean
      */
     @Override
     public boolean equals(Object obj) {
