@@ -1,5 +1,6 @@
 
-package inputstrategy;
+package Io.strategy;
+
 
 import javax.swing.JOptionPane;
 

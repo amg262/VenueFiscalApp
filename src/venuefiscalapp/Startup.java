@@ -3,12 +3,12 @@ package venuefiscalapp;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import outputstrategy.ConsoleAndFileOutput;
-import outputstrategy.ConsoleOutput;
-import outputstrategy.FileOutput;
-import outputstrategy.GuiAndFileOutput;
-import outputstrategy.GuiOutput;
-import outputstrategy.OutputStrategy;
+import Io.strategy.ConsoleAndFileOutput;
+import Io.strategy.ConsoleOutput;
+import Io.strategy.FileOutput;
+import Io.strategy.GuiAndFileOutput;
+import Io.strategy.GuiOutput;
+import Io.strategy.OutputStrategy;
 
 /**
  *

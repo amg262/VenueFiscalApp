@@ -1,5 +1,5 @@
 
-package inputstrategy;
+package Io.strategy;
 
 import java.util.Scanner;
 

@@ -4,7 +4,7 @@ package venuefiscalapp;
 import java.util.Objects;
 
 /**
- * This User class is the basis for how one logs into the Ez_Garage software.
+ * This User class is the basis for how one logs into the software.
  * It stores a username, password, and email all inside a User object. It has methods
  * on returning these properties from the User object, and a method to search through
  * the faux database to see if the user exists.

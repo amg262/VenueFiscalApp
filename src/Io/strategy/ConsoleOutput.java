@@ -1,5 +1,5 @@
 
-package outputstrategy;
+package Io.strategy;
 
 
 /**

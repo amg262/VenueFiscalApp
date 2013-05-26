@@ -2,7 +2,7 @@
 package venuefiscalapp;
 
 
-import outputstrategy.OutputStrategy;
+import Io.strategy.OutputStrategy;
 
 /**
  *
